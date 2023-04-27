@@ -1,3 +1,4 @@
 $Env:BUILD_NUMBER
 $Env:BUILD_VCS_NUMBER
+$Env:VCSROOT_BRANCH
 Write-Host "Hello, world"
