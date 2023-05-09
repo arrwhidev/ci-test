@@ -38,12 +38,7 @@ object Build : BuildType({
     }
 
     steps {
-        powerShell {
-            name = "Build"
-            scriptMode = script {
-                content = "Exit 1"
-            }
-        }
+        
         powerShell {
             name = "Test"
             scriptMode = script {
