@@ -7,7 +7,7 @@ project {
     buildType(Build)
 }
 
-fun createBuildType(name: String, scriptContent: String): BuildType {
+fun createBuildType(name: String): BuildType {
     return BuildType({
         this.name = name
 
@@ -19,12 +19,12 @@ fun createBuildType(name: String, scriptContent: String): BuildType {
             powerShell {
                 name = "Test"
                 scriptMode = script {
-                    content = scriptContent
+                    content = """Write-Host "OK""""
                 }
             }
         }
     })
 }
 
-object Build : BuildType by createBuildType("Build", """Write-Host "OK"""")
-object AnotherBuild : BuildType by createBuildType("AnotherBuild", """Write-Host "Another OK"""")
+object Build = createBuildType("Build")
+object AnotherBuild = createBuildType("AnotherBuild")
