@@ -8,8 +8,8 @@ project {
     buildType(CommonBuild("Build2"))
 }
 
-class CommonBuild(name: String) : BuildType ({
-    this.name = name
+class CommonBuild(buildName: String) : BuildType ({
+    this.name = buildName
 
     params {
         param("env.BUILD_ID", "%teamcity.build.id%")
