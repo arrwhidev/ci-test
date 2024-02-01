@@ -9,7 +9,7 @@ project {
 }
 
 class CommonBuild(buildName: String) : BuildType ({
-    this.id = buildName.toId()
+    id(buildName.toId())
     this.name = buildName
 
     params {
