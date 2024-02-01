@@ -4,27 +4,23 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
 version = "2023.05"
 
 project {
-    buildType(Build)
+    buildType(CommonBuild("Build1"))
+    buildType(CommonBuild("Build2"))
 }
 
-fun createBuildType(name: String): BuildType {
-    return BuildType({
-        this.name = name
+class CommonBuild(name: String) : BuildType ({
+    this.name = name
 
-        params {
-            param("env.BUILD_ID", "%teamcity.build.id%")
-        }
+    params {
+        param("env.BUILD_ID", "%teamcity.build.id%")
+    }
 
-        steps {
-            powerShell {
-                name = "Test"
-                scriptMode = script {
-                    content = """Write-Host "OK""""
-                }
+    steps {
+        powerShell {
+            name = "Test"
+            scriptMode = script {
+                content = """Write-Host "OK""""
             }
         }
-    })
-}
-
-object Build = createBuildType("Build")
-object AnotherBuild = createBuildType("AnotherBuild")
+    }
+})
